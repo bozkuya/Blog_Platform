@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${blog.title}">Blog Title</title>
+</head>
+<body>
+
+    <!-- Display Blog Post -->
+    <h1 th:text="${blog.title}">Blog Title</h1>
+    <p th:text="${blog.content}">Blog Content</p>
+
+    <!-- Update Blog Post -->
+    <h2>Update this Blog</h2>
+    <form th:action="@{'/update/' + ${blog.id}}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" th:value="${blog.title}" required>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required th:text="${blog.content}"></textarea>
+        <button type="submit">Update</button>
+    </form>
+
+    <!-- Delete Blog Post -->
+    <form th:action="@{'/delete/' + ${blog.id}}" method="post">
+        <button type="submit">Delete</button>
+    </form>
+
+</body>
+</html>
